@@ -1,0 +1,211 @@
+{
+  "hero": {
+    "topCta": {
+      "href": "https://prebuiltui.com?utm_source=pixels",
+      "badge": "NEW",
+      "text": "Generate your first thumbnail for free"
+    },
+    "title": {
+      "before": "AI Thumbnail Generator for your YouTube",
+      "highlight": "Videos"
+    },
+    "subtitle": "Stop wasting hours on design. Get high quality thumbnails in seconds with our AI thumbnail generator.",
+    "actions": {
+      "generate": "Generate now",
+      "howItWorks": "See how it works"
+    },
+    "specialFeatures": [
+      "No design skills required",
+      "Fast generation",
+      "High quality thumbnails"
+    ]
+  },
+  "nav": {
+    "home": "Home",
+    "generate": "Generate",
+    "myGenerations": "My Generations",
+    "contact": "Contact",
+    "getStarted": "Get Started",
+    "login": "Log in"
+  },
+  "contact": {
+    "titleSmall": "Contact",
+    "titleMain": "Grow your channel",
+    "subtitle": "Have questions about our AI? Ready to scale your views? Let's get in touch.",
+    "form": {
+      "nameLabel": "Your name",
+      "namePlaceholder": "Enter your name",
+      "emailLabel": "Email id",
+      "emailPlaceholder": "Enter your email",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Enter your message",
+      "submit": "Submit"
+    }
+  },
+  "cta": {
+    "title": "Ready to go viral?",
+    "subtitle": "Join thousands of creators who are scaling their channels with AI.",
+    "button": "Generate Free Thumbnail"
+  },
+  "features": {
+    "sectionTitle": {
+      "text1": "Features",
+      "text2": "Why use our generator?",
+      "text3": "Create stunning thumbnails with ease."
+    },
+    "cards": {
+      "iconAlt": "{{title}} icon"
+    },
+    "midCopy": "Our AI understands what makes a video go viral and designs the perfect thumbnail.",
+    "showcase": {
+      "image1Alt": "Features showcase",
+      "image2Alt": "Features showcase",
+      "title": "Boost your views with AI-optimized designs",
+      "description": "Stop guessing and start ranking. Our AI designs proven to capture attention.",
+      "linkText": "Start generating"
+    }
+  },
+  "pricing": {
+    "sectionTitle": {
+      "text1": "Pricing",
+      "text2": "Our Pricing Plans",
+      "text3": "Flexible pricing options designed to meet your needs — whether you're just getting started or scaling up."
+    },
+    "badges": {
+      "mostPopular": "Most Popular"
+    },
+    "cta": "Get Started",
+    "periods": {
+      "month": "month"
+    },
+    "plans": {
+      "basic": {
+        "name": "Basic",
+        "features": [
+          "50 AI thumbnails/month",
+          "Basic Templates",
+          "Standard Resolution",
+          "No watermark",
+          "Email Support"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "features": [
+          "Unlimited AI thumbnails",
+          "Premium Templates",
+          "4k Resolution",
+          "A/B Testing Tools",
+          "Priority Support",
+          "Custom Fonts",
+          "Brand Kit Analysis"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "features": [
+          "Everything in Pro",
+          "API Access",
+          "Team Collaboration",
+          "Custom Branding",
+          "Dedicated Account Manager"
+        ]
+      }
+    }
+  },
+  "testimonials": {
+    "sectionTitle": {
+      "text1": "Testimonials",
+      "text2": "Loved by designers.",
+      "text3": "See how our AI thumbnails are helping channels explode their views."
+    },
+    "items": [
+      {
+        "name": "Sophia Carter",
+        "handle": "@sophiacodes",
+        "date": "February 14, 2025",
+        "quote": "This SaaS app has completely streamlined our onboarding process. What used to take hours now takes minutes!"
+      },
+      {
+        "name": "Ethan Walker",
+        "handle": "@ethanwrites",
+        "date": "March 3, 2025",
+        "quote": "We’ve tried several tools, but nothing comes close in terms of speed and simplicity. Absolute game-changer."
+      },
+      {
+        "name": "Maya Patel",
+        "handle": "@mayapatel",
+        "date": "April 22, 2025",
+        "quote": "The automation features alone have saved our team countless hours every week. Worth every penny."
+      },
+      {
+        "name": "Liam Brooks",
+        "handle": "@liambrooks",
+        "date": "May 18, 2025",
+        "quote": "Setup was ridiculously easy. Within 10 minutes, we were running live and onboarding our first customers."
+      }
+    ]
+  },
+  "footer": {
+    "logoAlt": "Footer logo",
+    "tagline": "Making every customer feel valued—no matter the size of your audience.",
+    "social": {
+      "github": "Github",
+      "linkedin": "LinkedIn",
+      "portfolio": "Portfolio"
+    },
+    "sections": {
+      "product": {
+        "title": "Product",
+        "links": {
+          "home": "Home",
+          "support": "Support",
+          "pricing": "Pricing",
+          "affiliate": "Affiliate"
+        }
+      },
+      "resources": {
+        "title": "Resources",
+        "links": {
+          "company": "Company",
+          "blogs": "Blogs",
+          "community": "Community",
+          "careers": "Careers",
+          "about": "About"
+        }
+      },
+      "legal": {
+        "title": "Legal",
+        "links": {
+          "privacy": "Privacy",
+          "terms": "Terms"
+        }
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "subtitle": "Please sign in to continue"
+    },
+    "signup": {
+      "title": "Sign up",
+      "subtitle": "Create an account to continue"
+    },
+    "fields": {
+      "namePlaceholder": "Name",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password"
+    },
+    "actions": {
+      "forgotPassword": "Forgot password?",
+      "login": "Login",
+      "signup": "Sign up"
+    },
+    "toggle": {
+      "noAccount": "Don't have an account?",
+      "haveAccount": "Already have an account?",
+      "clickHere": "click here"
+    }
+  }
+}
