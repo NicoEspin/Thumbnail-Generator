@@ -5,25 +5,38 @@ import { motion } from "motion/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useAuth } from "../context/AuthContext";
 
 type NavItem = { to: string; label: string };
 
 export default function Navbar() {
+  const { isLoggedIn, user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const closeMenu = () => setIsOpen(false);
 
-  const navItems: NavItem[] = useMemo(
-    () => [
+  const handleLogout = () => {
+    logout();
+    closeMenu();
+    navigate("/");
+  };
+
+  // ✅ nav dinámico: My Generations (logged) | About (not logged)
+  const navItems: NavItem[] = useMemo(() => {
+    const items: NavItem[] = [
       { to: "/", label: t("nav.home") },
       { to: "/generate", label: t("nav.generate") },
-      { to: "/my-generations", label: t("nav.myGenerations") },
-      { to: "#", label: t("nav.contact") }
-    ],
-    [t],
-  );
+      isLoggedIn
+        ? { to: "/my-generations", label: t("nav.myGenerations") }
+        : { to: "/about", label: t("nav.about") },
+      { to: "#", label: t("nav.contact") },
+    ];
+
+    return items;
+  }, [t, isLoggedIn]);
 
   const NavItemLink = ({
     to,
@@ -39,13 +52,12 @@ export default function Navbar() {
     <Link
       to={to}
       onClick={onClick}
-      className={["group relative inline-block pb-1 transition", className].join(
-        " ",
-      )}
+      className={[
+        "group relative inline-block pb-1 transition",
+        className,
+      ].join(" ")}
     >
       <span className="relative z-10">{label}</span>
-
-      {/* underline animado: escala en X de 0 -> 100% desde la izquierda */}
       <span className="pointer-events-none absolute left-0 -bottom-0.5 h-[2px] w-full origin-left scale-x-0 bg-pink-500 transition-transform duration-300 ease-out group-hover:scale-x-100" />
     </Link>
   );
@@ -77,14 +89,31 @@ export default function Navbar() {
             <LanguageSwitcher />
           </div>
 
-          {/* ✅ CTA */}
-          <button
-            type="button"
-            onClick={() => navigate("/login")}
-            className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 active:scale-95 transition-all rounded-full"
-          >
-            {t("nav.getStarted")}
-          </button>
+          {/* ✅ Auth actions */}
+          {isLoggedIn ? (
+            <div className="relative group">
+              <button className="rounded-full size-8 bg-white/20 border-2 border-white/10">
+                {user?.name.charAt(0).toUpperCase()}
+              </button>
+              <div className="absolute hidden group-hover:block top-6 right-0 pt-4">
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="bg-white/20 border-2 border-white/10 px-5 py-1.5 rounded"
+                >
+                  {t("nav.logout")}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => navigate("/login")}
+              className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 active:scale-95 transition-all rounded-full text-white"
+            >
+              {t("nav.getStarted")}
+            </button>
+          )}
         </div>
 
         <button onClick={() => setIsOpen(true)} className="md:hidden">
@@ -97,45 +126,59 @@ export default function Navbar() {
         className={[
           "fixed inset-0 z-[100] md:hidden",
           "bg-black/90 backdrop-blur",
-          "transition-transform duration-400",
+          "transition-transform duration-300",
           isOpen ? "translate-x-0" : "-translate-x-full",
         ].join(" ")}
+        onClick={closeMenu}
       >
-        {/* ✅ Close button arriba derecha */}
-        <button
-          type="button"
-          onClick={closeMenu}
-          aria-label="Close menu"
-          className="absolute right-5 top-5 active:ring-3 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-pink-600 hover:bg-pink-700 transition text-white rounded-md flex"
-        >
-          <XIcon />
-        </button>
-
-        {/* ✅ Mobile content */}
-        <div className="h-full w-full flex flex-col items-center justify-center text-lg gap-8">
-          {/* ✅ Language (mobile) */}
-          <div className="rounded-full border border-pink-900 bg-pink-950/30 px-4 py-2">
-            <LanguageSwitcher />
-          </div>
-
-          {/* ✅ Links */}
-          {navItems.map((item) => (
-            <NavItemLink
-              key={item.to}
-              to={item.to}
-              label={item.label}
-              onClick={closeMenu}
-              className="text-white"
-            />
-          ))}
-
-          {/* extra link login */}
-          <NavItemLink
-            to="/login"
-            label={t("nav.login")}
+        {/* stop click bubbling so only backdrop closes */}
+        <div className="h-full w-full" onClick={(e) => e.stopPropagation()}>
+          {/* ✅ Close button arriba derecha */}
+          <button
+            type="button"
             onClick={closeMenu}
-            className="text-white"
-          />
+            aria-label="Close menu"
+            className="absolute right-5 top-5 active:ring-3 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-pink-600 hover:bg-pink-700 transition text-white rounded-md flex"
+          >
+            <XIcon />
+          </button>
+
+          {/* ✅ Mobile content */}
+          <div className="h-full w-full flex flex-col items-center justify-center text-lg gap-8">
+            {/* ✅ Language (mobile) */}
+            <div className="rounded-full border border-pink-900 bg-pink-950/30 px-4 py-2">
+              <LanguageSwitcher />
+            </div>
+
+            {/* ✅ Links */}
+            {navItems.map((item) => (
+              <NavItemLink
+                key={item.to}
+                to={item.to}
+                label={item.label}
+                onClick={closeMenu}
+                className="text-white"
+              />
+            ))}
+
+            {/* ✅ Auth (mobile) */}
+            {isLoggedIn ? (
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="px-6 py-2.5 bg-white/10 hover:bg-white/15 border border-white/10 active:scale-95 transition-all rounded-full text-white"
+              >
+                {t("nav.logout")}
+              </button>
+            ) : (
+              <NavItemLink
+                to="/login"
+                label={t("nav.login")}
+                onClick={closeMenu}
+                className="text-white"
+              />
+            )}
+          </div>
         </div>
       </div>
     </>

@@ -9,6 +9,7 @@ import Generate from "./pages/Generate";
 import HomePage from "./pages/HomePage";
 import MyGeneration from "./pages/MyGeneration";
 import YTPreview from "./pages/YTPreview";
+import { Toaster } from "sonner";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -31,6 +32,7 @@ export default function App() {
 
   return (
     <>
+      <Toaster />
       <LenisScroll />
       <Navbar />
       <Routes>

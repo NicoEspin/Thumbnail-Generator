@@ -18,7 +18,11 @@ export default function HeroSection() {
       <div className="absolute top-30 -z-10 left-1/4 size-72 bg-pink-600 blur-[300px]"></div>
 
       <motion.a
-        href={t("hero.topCta.href")}
+        href="/generate"
+        onClick={(e) => {
+          e.preventDefault();
+          navigate("/generate");
+        }}
         className="group flex items-center gap-2 rounded-full p-1 pr-3 mt-44 text-pink-100 bg-pink-200/15"
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
