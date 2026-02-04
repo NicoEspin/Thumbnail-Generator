@@ -208,5 +208,66 @@
       "haveAccount": "¿Ya tienes una cuenta?",
       "clickHere": "haz clic aquí"
     }
+  },
+  "generate": {
+    "heading": "Crea tu miniatura",
+    "subheading": "Describe tu idea y deja que la IA la convierta en realidad",
+    "form": {
+      "titleLabel": "Título o tema",
+      "titlePlaceholder": "Ej.: 10 tips para Ads de marketing",
+      "additionalLabel": "Prompts adicionales",
+      "optional": "(opcional)",
+      "additionalPlaceholder": "Agrega elementos específicos, el mood o preferencias de estilo."
+    },
+    "button": {
+      "generating": "Generando...",
+      "generate": "Generar miniatura"
+    },
+    "preview": {
+      "title": "Vista previa"
+    }
+  },
+  "myGenerations": {
+    "heading": "Mis generaciones",
+    "subheading": "Ver y gestionar todas tus miniaturas generadas con IA",
+    "empty": {
+      "title": "No se generaron miniaturas",
+      "subtitle": "Genera tu primera miniatura para verla aquí"
+    },
+    "states": {
+      "generating": "Generando...",
+      "noImage": "Sin imagen"
+    },
+    "actions": {
+      "delete": "Eliminar",
+      "download": "Descargar",
+      "openPreview": "Abrir vista previa"
+    }
+  },
+  "selectors": {
+    "aspectRatio": {
+      "label": "Relación de aspecto"
+    },
+    "colorScheme": {
+      "label": "Esquema de color",
+      "selected": "Seleccionado: {{name}}"
+    },
+    "style": {
+      "label": "Estilo de miniatura",
+      "names": {
+        "boldGraphic": "Audaz y gráfico",
+        "minimalist": "Minimalista",
+        "photorealistic": "Fotorrealista",
+        "illustrated": "Ilustrado",
+        "techFuturistic": "Tech/Futurista"
+      },
+      "descriptions": {
+        "boldGraphic": "Alto contraste, tipografía marcada, visuales llamativos",
+        "minimalist": "Limpio y simple, mucho espacio en blanco",
+        "photorealistic": "Basado en fotos, aspecto natural",
+        "illustrated": "Dibujado a mano, artístico y creativo",
+        "techFuturistic": "Moderno, futurista, estilo cyberpunk"
+      }
+    }
   }
 }

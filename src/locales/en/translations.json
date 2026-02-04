@@ -207,5 +207,66 @@
       "haveAccount": "Already have an account?",
       "clickHere": "click here"
     }
+  },
+  "generate": {
+    "heading": "Create your thumbnail",
+    "subheading": "Describe your vision and let AI bring it to life",
+    "form": {
+      "titleLabel": "Title or topic",
+      "titlePlaceholder": "E.g., 10 tips for Marketing Ads",
+      "additionalLabel": "Additional prompts",
+      "optional": "(optional)",
+      "additionalPlaceholder": "Add any specific elements, mood, or style preferences."
+    },
+    "button": {
+      "generating": "Generating...",
+      "generate": "Generate thumbnail"
+    },
+    "preview": {
+      "title": "Preview"
+    }
+  },
+  "myGenerations": {
+    "heading": "My generations",
+    "subheading": "View and manage all your AI-generated thumbnails",
+    "empty": {
+      "title": "No thumbnails have been generated",
+      "subtitle": "Generate your first thumbnail to see it here"
+    },
+    "states": {
+      "generating": "Generating...",
+      "noImage": "No image"
+    },
+    "actions": {
+      "delete": "Delete",
+      "download": "Download",
+      "openPreview": "Open preview"
+    }
+  },
+  "selectors": {
+    "aspectRatio": {
+      "label": "Aspect ratio"
+    },
+    "colorScheme": {
+      "label": "Color scheme",
+      "selected": "Selected: {{name}}"
+    },
+    "style": {
+      "label": "Thumbnail style",
+      "names": {
+        "boldGraphic": "Bold & Graphic",
+        "minimalist": "Minimalist",
+        "photorealistic": "Photorealistic",
+        "illustrated": "Illustrated",
+        "techFuturistic": "Tech/Futuristic"
+      },
+      "descriptions": {
+        "boldGraphic": "High contrast, bold typography, striking visuals",
+        "minimalist": "Clean, simple, lots of white space",
+        "photorealistic": "Photo-based, natural looking",
+        "illustrated": "Hand-drawn, artistic, creative",
+        "techFuturistic": "Modern, futuristic, cyberpunk"
+      }
+    }
   }
 }
