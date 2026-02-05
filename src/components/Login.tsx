@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import SoftBackdrop from "./SoftBackdrop";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 type AuthState = "login" | "register";
 
@@ -10,6 +12,9 @@ const Login = (_props: Props) => {
   const { t } = useTranslation();
 
   const [state, setState] = useState<AuthState>("login");
+  const { user, login, signup } = useAuth();
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -17,15 +22,50 @@ const Login = (_props: Props) => {
     password: "",
   });
 
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: tu lógica de login / registro
+    if (submitting) return;
+
+    setError(null);
+    setSubmitting(true);
+
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      password: formData.password,
+    };
+
+    try {
+      if (state === "login") {
+        // si tu login no necesita name, igual no molesta; si molesta, pasá solo email/password
+        await login({
+          email: payload.email,
+          password: payload.password,
+        } as any);
+      } else {
+        await signup(payload as any);
+      }
+      // el redirect lo maneja el useEffect cuando user se setea
+    } catch (err: any) {
+      setError(err?.message || String(err) || "Auth error");
+    } finally {
+      setSubmitting(false);
+    }
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const isLogin = state === "login";
 
@@ -140,11 +180,20 @@ const Login = (_props: Props) => {
             </button>
           </div>
 
+          {error && (
+            <p className="mt-3 text-sm text-red-300 text-left">{error}</p>
+          )}
+
           <button
             type="submit"
-            className="mt-2 w-full h-11 rounded-full text-white bg-pink-600 hover:bg-pink-500 transition "
+            disabled={submitting}
+            className="mt-2 w-full h-11 rounded-full text-white bg-pink-600 hover:bg-pink-500 transition disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {isLogin ? t("auth.actions.login") : t("auth.actions.signup")}
+            {submitting
+              ? "..."
+              : isLogin
+                ? t("auth.actions.login")
+                : t("auth.actions.signup")}
           </button>
 
           <p
