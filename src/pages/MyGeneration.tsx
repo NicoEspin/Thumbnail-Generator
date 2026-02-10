@@ -1,12 +1,12 @@
 import { ArrowRight, DownloadIcon, TrashIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { dummyThumbnails, type IThumbnail } from "../assets/assets";
-import SoftBackdrop from "../components/SoftBackdrop";
-import { useAuth } from "../context/AuthContext";
-import api from "../configs/api";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { type IThumbnail } from "../assets/assets";
+import SoftBackdrop from "../components/SoftBackdrop";
+import api from "../configs/api";
+import { useAuth } from "../context/AuthContext";
 
 const MyGeneration = () => {
   const { t } = useTranslation();
@@ -51,9 +51,10 @@ const MyGeneration = () => {
         "Are you sure you want to delete this thumbnail?",
       );
       if (!confirm) return;
-      const { data } = await api.delete(`/api/thumbnails/${id}`);
+      const { data } = await api.delete(`/api/thumbnail/${id}`);
+      console.log(data);  
       toast.success("Thumbnail deleted successfully");
-      setThumbnails(thumbnails.filter((thumbnail) => thumbnail._id !== id));
+      setThumbnails((prev) => prev.filter((t) => t._id !== id));
     } catch (error: any) {
       console.log(error);
       toast.error(error?.response?.data?.message || error?.message);

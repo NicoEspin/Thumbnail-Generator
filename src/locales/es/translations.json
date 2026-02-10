@@ -28,7 +28,8 @@
     "getStarted": "Empezar",
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
-    "about": "Sobre nosotros"
+    "about": "Sobre nosotros",
+    "community": "Comunidad"
   },
   "contact": {
     "titleSmall": "Contacto",
@@ -53,17 +54,31 @@
     "sectionTitle": {
       "text1": "Funciones",
       "text2": "¿Por qué usar nuestro generador?",
-      "text3": "Crea miniaturas increíbles con facilidad."
+      "text3": "Creá miniaturas increíbles sin esfuerzo."
     },
     "cards": {
-      "iconAlt": "Ícono de {{title}}"
+      "iconAlt": "Ícono de {{title}}",
+      "items": {
+        "smartAnalysis": {
+          "title": "Análisis inteligente",
+          "description": "Nuestra IA analiza el contenido del video para sugerir los conceptos más clickeables."
+        },
+        "eyeCatchingThumbnails": {
+          "title": "Miniaturas llamativas",
+          "description": "Generá miniaturas vibrantes y de alto contraste que destaquen en el feed."
+        },
+        "fullyEditable": {
+          "title": "Totalmente editable",
+          "description": "Obtené diseños por capas para ajustar todo al detalle."
+        }
+      }
     },
     "midCopy": "Nuestra IA entiende qué hace que un video se vuelva viral y diseña la miniatura perfecta.",
     "showcase": {
       "image1Alt": "Muestra de funciones",
       "image2Alt": "Muestra de funciones",
-      "title": "Aumenta tus vistas con diseños optimizados por IA",
-      "description": "Dejá de adivinar y empezá a posicionar. Nuestra IA diseña miniaturas probadas para captar la atención.",
+      "title": "Aumentá tus vistas con diseños optimizados por IA",
+      "description": "Dejá de adivinar y empezá a posicionar. Nuestra IA diseña miniaturas probadas para captar atención.",
       "linkText": "Empezar a generar"
     }
   },
@@ -214,12 +229,38 @@
   "generate": {
     "heading": "Crea tu miniatura",
     "subheading": "Describe tu idea y deja que la IA la convierta en realidad",
+    "publicBadge": "Público",
+    "privateBadge": "Privado",
     "form": {
       "titleLabel": "Título o tema",
       "titlePlaceholder": "Ej.: 10 tips para Ads de marketing",
       "additionalLabel": "Prompts adicionales",
       "optional": "(opcional)",
-      "additionalPlaceholder": "Agrega elementos específicos, el mood o preferencias de estilo."
+      "additionalPlaceholder": "Agrega elementos específicos, el mood o preferencias de estilo.",
+      "publicLabel": "Visibilidad en la comunidad",
+      "publicHint": "Si está activado, tu miniatura aparecerá en el feed de la comunidad.",
+      "referenceImages": {
+        "label": "Imágenes de referencia",
+        "hint": "Opcional. Subí hasta 2 imágenes para guiar al modelo (persona, fondo o estilo general).",
+        "add": "Agregar imágenes",
+        "savedLabel": "Referencias guardadas",
+        "slot": "Referencia {{n}}",
+        "remove": "Quitar",
+        "dropTitle": "Click para seleccionar",
+        "dropHint": "PNG/JPG/WEBP · hasta {{mb}}MB c/u",
+        "roleLabel": "Pista de rol (opcional)",
+        "roles": {
+          "auto": "Auto (sin pista)",
+          "person": "Persona / sujeto",
+          "background": "Fondo",
+          "style": "Referencia de estilo"
+        },
+        "errors": {
+          "invalidType": "Solo se permiten imágenes PNG, JPG o WEBP",
+          "tooLarge": "La imagen es muy pesada (máx {{mb}}MB)",
+          "tooMany": "Podés subir hasta {{n}} imágenes"
+        }
+      }
     },
     "button": {
       "generating": "Generando...",
@@ -271,5 +312,140 @@
         "techFuturistic": "Moderno, futurista, estilo cyberpunk"
       }
     }
+  },
+  "communityGenerations": {
+    "heading": "Generaciones de la comunidad",
+    "subheading": "Explorá lo que está creando la gente.",
+    "states": {
+      "noImage": "No hay imagen disponible"
+    },
+    "empty": {
+      "title": "Todavía no hay miniaturas públicas",
+      "subtitle": "Sé el primero en compartir una con la comunidad."
+    },
+    "actions": {
+      "download": "Descargar",
+      "openPreview": "Abrir preview"
+    },
+    "button": {
+      "loadMore": "Cargar más",
+      "loading": "Cargando...",
+      "end": "Llegaste al final."
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "Sobre Thumbzilla",
+      "note": "IA para creadores, sin fricción",
+      "title": "Miniaturas que se ven profesionales en segundos",
+      "subtitle": "Thumbzilla es un generador de thumbnails con IA diseñado para creators y equipos que quieren resultados rápidos sin perder control. Analizamos el contexto del video para proponer conceptos clickeables, y transformamos esas ideas en diseños listos para publicar.",
+      "ctaPrimary": "Empezar a generar",
+      "ctaSecondary": "Hablar con nosotros",
+      "stats": [
+        {
+          "title": "Sin saber diseño",
+          "description": "Plantillas + composición pensadas para YouTube."
+        },
+        {
+          "title": "Velocidad real",
+          "description": "Menos tiempo en diseño, más tiempo creando."
+        },
+        {
+          "title": "Control total",
+          "description": "Ajustá el resultado hasta el último detalle."
+        }
+      ]
+    },
+
+    "mission": {
+      "kicker": "Misión",
+      "title": "Hacer que cada creator publique más y mejor",
+      "description": "Reducimos el tiempo entre idea y publicación. Queremos que tus miniaturas destaquen, mantengan coherencia de marca y mejoren tus métricas."
+    },
+    "vision": {
+      "kicker": "Visión",
+      "title": "Automatizar lo repetitivo, potenciar lo creativo",
+      "description": "La IA debería encargarse del trabajo pesado: composición, contraste, legibilidad y consistencia. Vos te enfocás en el contenido."
+    },
+    "promise": {
+      "kicker": "Promesa",
+      "title": "Calidad, simplicidad y resultados medibles",
+      "description": "Construimos una experiencia simple: inputs claros, generación rápida y salidas preparadas para que la miniatura rinda en el feed."
+    },
+
+    "featuresTitle": "¿Qué hace diferente a Thumbzilla?",
+    "featuresSubtitle": "Pensado para convertir ideas en miniaturas con impacto: rápidas, claras, consistentes y listas para escalar tu canal.",
+
+    "features": {
+      "smart": {
+        "title": "Análisis inteligente",
+        "description": "Sugerimos conceptos y enfoques alineados al tema del video para maximizar claridad y click-through."
+      },
+      "fast": {
+        "title": "Generación rápida",
+        "description": "Obtené resultados en segundos para iterar sin frenar tu ritmo de publicación."
+      },
+      "editable": {
+        "title": "Totalmente editable",
+        "description": "Diseños preparados para ajustes finos: texto, jerarquía visual, composición y estilo."
+      },
+      "optimized": {
+        "title": "Optimizado para YouTube",
+        "description": "Priorizamos legibilidad, contraste y estructura visual para que destaque en tamaños pequeños."
+      },
+      "reliable": {
+        "title": "Consistencia de marca",
+        "description": "Mantené un look coherente: estilos, acentos y decisiones visuales repetibles."
+      },
+      "creator": {
+        "title": "Hecho para creadores",
+        "description": "Flujo simple, sin vueltas: lo esencial para publicar mejor y más rápido."
+      }
+    },
+
+    "how": {
+      "title": "Cómo funciona",
+      "subtitle": "Un flujo corto y directo, diseñado para producir miniaturas listas para usar.",
+      "steps": [
+        {
+          "title": "Describí tu video",
+          "description": "Ingresá el título y contexto. Con eso, la IA entiende el foco y el ángulo."
+        },
+        {
+          "title": "Elegí estilo y formato",
+          "description": "Seleccioná un look (bold, tech, minimal) y el aspect ratio que necesitás."
+        },
+        {
+          "title": "Generá y ajustá",
+          "description": "Generá variantes, elegí la mejor y hacé tweaks para que quede perfecta."
+        }
+      ],
+      "cta": "Ver el generador",
+      "note": "Tip: probá 2–3 variantes para encontrar el ángulo más clickeable."
+    },
+
+    "story": {
+      "kicker": "Historia",
+      "title": "Construido con mentalidad de producto y performance",
+      "p1": "Thumbzilla nace de un problema real: creators y equipos que pierden horas ajustando diseños, sin un proceso consistente y repetible.",
+      "p2": "Aplicamos la misma filosofía que uso construyendo software: sistemas escalables, UX clara y foco en impacto. La meta no es “hacer una imagen linda”, sino ayudarte a publicar con mayor frecuencia y mejores resultados."
+    },
+
+    "builder": {
+      "kicker": "Quién lo construye",
+      "title": "Hecho por un Full Stack enfocado en sistemas escalables",
+      "description": "Soy Nicolás Espin. Trabajo con ecosistemas React/Next.js de alto rendimiento y automatización con IA. En Andeshire lideré migraciones y patrones de frontend y orquesté agentes para automatizar procesos reales.",
+      "name": "Nicolás Espin",
+      "role": "Full Stack Developer • AI & Automation"
+    },
+
+    "final": {
+      "title": "¿Listo para mejorar tus miniaturas?",
+      "subtitle": "Unite a creadores que están acelerando su flujo con IA y diseños optimizados para captar atención.",
+      "ctaPrimary": "Generar miniatura gratis",
+      "ctaSecondary": "Contactar"
+    },
+
+    "footer": "© 2026 Nicolás Espin"
   }
 }

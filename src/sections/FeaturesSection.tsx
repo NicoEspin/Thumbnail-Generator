@@ -26,7 +26,7 @@ export default function FeaturesSection() {
 
           return (
             <motion.div
-              key={index}
+              key={feature.title} // ✅ stable key (better than index)
               className={
                 isCenter
                   ? "relative p-[2px] rounded-[13px] overflow-hidden"
@@ -64,13 +64,17 @@ export default function FeaturesSection() {
               <div className="relative z-10 p-6 rounded-[11px] space-y-4 bg-slate-950 max-w-80 w-full">
                 <img
                   src={feature.icon}
-                  alt={t("features.cards.iconAlt", { title: feature.title })}
+                  // ✅ translate the title key before injecting into iconAlt
+                  alt={t("features.cards.iconAlt", { title: t(feature.title) })}
                 />
+
+                {/* ✅ translate feature keys */}
                 <h3 className="text-base font-medium text-white">
-                  {feature.title}
+                  {t(feature.title)}
                 </h3>
+
                 <p className="text-slate-400 line-clamp-2 pb-4">
-                  {feature.description}
+                  {t(feature.description)}
                 </p>
               </div>
             </motion.div>
@@ -143,7 +147,7 @@ export default function FeaturesSection() {
             </p>
 
             <a
-             onClick={() => navigate("/generate")}
+              onClick={() => navigate("/generate")}
               className="group flex items-center gap-2 mt-4 text-pink-600 hover:text-pink-700 transition cursor-pointer"
             >
               {t("features.showcase.linkText")}

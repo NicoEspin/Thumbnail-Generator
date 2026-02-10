@@ -26,7 +26,7 @@ export default function PricingSection() {
         {pricingData.map((plan: IPricing, index: number) => (
           <motion.div
             key={`${plan.name}-${index}`}
-            className="w-72"
+            className="relative w-72" // <- importante: relative acá
             initial={{ y: 150, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -38,6 +38,12 @@ export default function PricingSection() {
               mass: 1,
             }}
           >
+            {plan.mostPopular && (
+              <p className="absolute z-50 px-3 text-sm -top-3.5 left-3.5 py-1 bg-pink-400 rounded-full">
+                {t("pricing.badges.mostPopular")}
+              </p>
+            )}
+
             <SpotlightCard
               spotlightColor={
                 plan.mostPopular
@@ -50,12 +56,6 @@ export default function PricingSection() {
                 plan.mostPopular ? "bg-pink-950" : "bg-pink-950/30",
               ].join(" ")}
             >
-              {plan.mostPopular && (
-                <p className="absolute px-3 text-sm -top-3.5 left-3.5 py-1 bg-pink-400 rounded-full">
-                  {t("pricing.badges.mostPopular")}
-                </p>
-              )}
-
               <p className="font-semibold">{plan.name}</p>
 
               <h1 className="text-3xl font-semibold">

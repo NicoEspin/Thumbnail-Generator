@@ -1,13 +1,62 @@
 // Navbar.tsx
 import { MenuIcon, XIcon } from "lucide-react";
-import { useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { motion } from "motion/react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useAuth } from "../context/AuthContext";
 
-type NavItem = { to: string; label: string };
+type NavItem = { to: string; label: string; end?: boolean };
+
+type NavItemLinkProps = {
+  to: string;
+  label: string;
+  end?: boolean;
+  onClick?: () => void;
+  className?: string;
+};
+
+// ✅ IMPORTANTE: declarado fuera de Navbar para que NO cambie su identidad en cada render
+const NavItemLink = memo(function NavItemLink({
+  to,
+  label,
+  end,
+  onClick,
+  className = "",
+}: NavItemLinkProps) {
+  return (
+    <NavLink
+      to={to}
+      end={end}
+      onClick={onClick}
+      className={({ isActive }) =>
+        [
+          "group relative inline-block pb-1 transition",
+          className,
+          isActive ? "text-pink-400" : "text-white/90 hover:text-white",
+        ].join(" ")
+      }
+    >
+      {({ isActive }) => (
+        <>
+          <span className="relative z-10">{label}</span>
+
+          {/* underline */}
+          <span
+            className={[
+              "pointer-events-none absolute left-0 -bottom-0.5 h-[2px] w-full origin-left bg-pink-500",
+              // ✅ Activo: visible y sin animación para que NO “re-dispare” al navegar
+              isActive
+                ? "scale-x-100 transition-none"
+                : "scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100",
+            ].join(" ")}
+          />
+        </>
+      )}
+    </NavLink>
+  );
+});
 
 export default function Navbar() {
   const { isLoggedIn, user, logout } = useAuth();
@@ -24,43 +73,29 @@ export default function Navbar() {
     navigate("/");
   };
 
-  // ✅ nav dinámico: My Generations (logged) | About (not logged)
+  // ✅ nav dinámico:
+  // - /generate solo si está logeado
+  // - My Generations (logged) | About (not logged)
+  // - Community (siempre)
   const navItems: NavItem[] = useMemo(() => {
-    const items: NavItem[] = [
-      { to: "/", label: t("nav.home") },
-      { to: "/generate", label: t("nav.generate") },
+    const items: NavItem[] = [{ to: "/", label: t("nav.home"), end: true }];
+
+    if (isLoggedIn) {
+      items.push({ to: "/generate", label: t("nav.generate") });
+    }
+
+    items.push({ to: "/community", label: t("nav.community") });
+
+    items.push(
       isLoggedIn
         ? { to: "/my-generations", label: t("nav.myGenerations") }
-        : { to: "/about", label: t("nav.about") },
-      { to: "#", label: t("nav.contact") },
-    ];
+        : { to: "/about", label: t("nav.about") }
+    );
+
+    items.push({ to: "/contact", label: t("nav.contact") });
 
     return items;
   }, [t, isLoggedIn]);
-
-  const NavItemLink = ({
-    to,
-    label,
-    onClick,
-    className = "",
-  }: {
-    to: string;
-    label: string;
-    onClick?: () => void;
-    className?: string;
-  }) => (
-    <Link
-      to={to}
-      onClick={onClick}
-      className={[
-        "group relative inline-block pb-1 transition",
-        className,
-      ].join(" ")}
-    >
-      <span className="relative z-10">{label}</span>
-      <span className="pointer-events-none absolute left-0 -bottom-0.5 h-[2px] w-full origin-left scale-x-0 bg-pink-500 transition-transform duration-300 ease-out group-hover:scale-x-100" />
-    </Link>
-  );
 
   return (
     <>
@@ -71,14 +106,19 @@ export default function Navbar() {
         viewport={{ once: true }}
         transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1 }}
       >
-        <Link to={"/"}>
+        <NavLink to={"/"} end>
           <img src="/logo.svg" alt="Logo" className="h-8.5 w-auto" />
-        </Link>
+        </NavLink>
 
         {/* ✅ Desktop nav */}
         <div className="hidden md:flex items-center gap-8 transition duration-500">
           {navItems.map((item) => (
-            <NavItemLink key={item.to} to={item.to} label={item.label} />
+            <NavItemLink
+              key={item.to}
+              to={item.to}
+              label={item.label}
+              end={item.end}
+            />
           ))}
         </div>
 
@@ -93,7 +133,7 @@ export default function Navbar() {
           {isLoggedIn ? (
             <div className="relative group">
               <button className="rounded-full size-8 bg-white/20 border-2 border-white/10">
-                {user?.name.charAt(0).toUpperCase()}
+                {user?.name?.charAt(0)?.toUpperCase?.() ?? "U"}
               </button>
               <div className="absolute hidden group-hover:block top-6 right-0 pt-4">
                 <button
@@ -156,6 +196,7 @@ export default function Navbar() {
                 key={item.to}
                 to={item.to}
                 label={item.label}
+                end={item.end}
                 onClick={closeMenu}
                 className="text-white"
               />

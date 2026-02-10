@@ -10,6 +10,9 @@ import HomePage from "./pages/HomePage";
 import MyGeneration from "./pages/MyGeneration";
 import YTPreview from "./pages/YTPreview";
 import { Toaster } from "sonner";
+import CommunityGenerations from "./pages/CommunityGenerations";
+import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -39,7 +42,11 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/generate" element={<Generate />} />
         <Route path="/generate/:id" element={<Generate />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/my-generations" element={<MyGeneration />} />
+        <Route path="/community" element={<CommunityGenerations />} />
+        <Route path="/about" element={<AboutPage />} />
+
         <Route path="/preview" element={<YTPreview />} />
         <Route path="/login" element={<Login />} />
       </Routes>

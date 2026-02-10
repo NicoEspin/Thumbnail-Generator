@@ -28,7 +28,8 @@
     "getStarted": "Get Started",
     "login": "Log in",
     "logout": "Log out",
-    "about": "About"
+    "about": "About",
+    "community": "Community"
   },
   "contact": {
     "titleSmall": "Contact",
@@ -56,7 +57,21 @@
       "text3": "Create stunning thumbnails with ease."
     },
     "cards": {
-      "iconAlt": "{{title}} icon"
+      "iconAlt": "{{title}} icon",
+      "items": {
+        "smartAnalysis": {
+          "title": "Smart Analysis",
+          "description": "Our AI analyzes video content to suggest most clickable concepts."
+        },
+        "eyeCatchingThumbnails": {
+          "title": "Eye-Catching Thumbnails",
+          "description": "Generate vibrant, high-contrast thumbnails that stand out in the feed"
+        },
+        "fullyEditable": {
+          "title": "Fully Editable",
+          "description": "Get fully layered designs you can tweak to perfection."
+        }
+      }
     },
     "midCopy": "Our AI understands what makes a video go viral and designs the perfect thumbnail.",
     "showcase": {
@@ -213,12 +228,38 @@
   "generate": {
     "heading": "Create your thumbnail",
     "subheading": "Describe your vision and let AI bring it to life",
+    "publicBadge": "Public",
+    "privateBadge": "Private",
     "form": {
       "titleLabel": "Title or topic",
       "titlePlaceholder": "E.g., 10 tips for Marketing Ads",
       "additionalLabel": "Additional prompts",
       "optional": "(optional)",
-      "additionalPlaceholder": "Add any specific elements, mood, or style preferences."
+      "additionalPlaceholder": "Add any specific elements, mood, or style preferences.",
+      "publicLabel": "Community visibility",
+      "publicHint": "If enabled, your thumbnail will appear in the community feed.",
+      "referenceImages": {
+        "label": "Reference images",
+        "hint": "Optional. Upload up to 2 images to guide the model (person, background, or overall style).",
+        "add": "Add images",
+        "savedLabel": "Saved references",
+        "slot": "Reference {{n}}",
+        "remove": "Remove",
+        "dropTitle": "Click to select",
+        "dropHint": "PNG/JPG/WEBP · up to {{mb}}MB each",
+        "roleLabel": "Role hint (optional)",
+        "roles": {
+          "auto": "Auto (no hint)",
+          "person": "Person / subject",
+          "background": "Background",
+          "style": "Style reference"
+        },
+        "errors": {
+          "invalidType": "Only PNG, JPG or WEBP images are allowed",
+          "tooLarge": "Image is too large (max {{mb}}MB)",
+          "tooMany": "You can upload up to {{n}} images"
+        }
+      }
     },
     "button": {
       "generating": "Generating...",
@@ -270,5 +311,140 @@
         "techFuturistic": "Modern, futuristic, cyberpunk"
       }
     }
+  },
+  "communityGenerations": {
+    "heading": "Community generations",
+    "subheading": "Explore what others are creating.",
+    "states": {
+      "noImage": "No image available"
+    },
+    "empty": {
+      "title": "No public thumbnails yet",
+      "subtitle": "Be the first to share one with the community."
+    },
+    "actions": {
+      "download": "Download",
+      "openPreview": "Open preview"
+    },
+    "button": {
+      "loadMore": "Load more",
+      "loading": "Loading...",
+      "end": "You’ve reached the end."
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "About Thumbzilla",
+      "note": "AI for creators, frictionless",
+      "title": "Professional thumbnails in seconds",
+      "subtitle": "Thumbzilla is an AI thumbnail generator built for creators and teams who want speed without losing control. We analyze your video context to propose clickable concepts, then turn those ideas into publish-ready designs.",
+      "ctaPrimary": "Start generating",
+      "ctaSecondary": "Talk to us",
+      "stats": [
+        {
+          "title": "No design skills needed",
+          "description": "Templates + composition built for YouTube."
+        },
+        {
+          "title": "Real speed",
+          "description": "Less time designing, more time creating."
+        },
+        {
+          "title": "Full control",
+          "description": "Fine-tune every detail until it’s perfect."
+        }
+      ]
+    },
+
+    "mission": {
+      "kicker": "Mission",
+      "title": "Help creators publish more—and better",
+      "description": "We reduce the time between idea and upload. Our goal is thumbnails that stand out, stay on-brand, and improve your metrics."
+    },
+    "vision": {
+      "kicker": "Vision",
+      "title": "Automate the repetitive, amplify creativity",
+      "description": "AI should handle the heavy lifting: composition, contrast, readability, and consistency—so you focus on content."
+    },
+    "promise": {
+      "kicker": "Promise",
+      "title": "Quality, simplicity, measurable outcomes",
+      "description": "A simple experience: clear inputs, fast generation, and outputs designed to perform in the feed."
+    },
+
+    "featuresTitle": "What makes Thumbzilla different?",
+    "featuresSubtitle": "Built to turn ideas into high-impact thumbnails: fast, readable, consistent, and ready to scale your channel.",
+
+    "features": {
+      "smart": {
+        "title": "Smart analysis",
+        "description": "We suggest concepts and angles aligned with your topic to maximize clarity and click-through."
+      },
+      "fast": {
+        "title": "Fast generation",
+        "description": "Get results in seconds so you can iterate without slowing your publishing pace."
+      },
+      "editable": {
+        "title": "Fully editable",
+        "description": "Outputs prepared for fine tweaks: text, visual hierarchy, composition, and style."
+      },
+      "optimized": {
+        "title": "Optimized for YouTube",
+        "description": "We prioritize readability, contrast, and structure to stand out at small sizes."
+      },
+      "reliable": {
+        "title": "Brand consistency",
+        "description": "Keep a coherent look with repeatable styles, accents, and visual decisions."
+      },
+      "creator": {
+        "title": "Creator-first UX",
+        "description": "Simple flow, no fluff—what you need to publish faster and better."
+      }
+    },
+
+    "how": {
+      "title": "How it works",
+      "subtitle": "A short, direct flow designed to produce thumbnails ready to use.",
+      "steps": [
+        {
+          "title": "Describe your video",
+          "description": "Add title and context. The AI uses that to understand the focus and angle."
+        },
+        {
+          "title": "Pick style and format",
+          "description": "Choose a look (bold, tech, minimal) and the aspect ratio you need."
+        },
+        {
+          "title": "Generate and refine",
+          "description": "Generate variations, pick the best one, and tweak until it’s perfect."
+        }
+      ],
+      "cta": "Open generator",
+      "note": "Tip: try 2–3 variations to find the most clickable angle."
+    },
+
+    "story": {
+      "kicker": "Story",
+      "title": "Built with product & performance mindset",
+      "p1": "Thumbzilla started from a real problem: creators and teams wasting hours tweaking designs without a consistent, repeatable process.",
+      "p2": "We apply the same approach I use in software: scalable systems, clear UX, and measurable impact. The goal isn’t just “a nice image”—it’s helping you publish more often with better results."
+    },
+
+    "builder": {
+      "kicker": "Built by",
+      "title": "A Full Stack builder focused on scalable systems",
+      "description": "I’m Nicolás Espin. I build high-performance React/Next.js ecosystems and AI automation. At Andeshire, I led migrations and frontend patterns and orchestrated AI agents to automate real workflows.",
+      "name": "Nicolás Espin",
+      "role": "Full Stack Developer • AI & Automation"
+    },
+
+    "final": {
+      "title": "Ready to improve your thumbnails?",
+      "subtitle": "Join creators accelerating their workflow with AI and conversion-focused designs.",
+      "ctaPrimary": "Generate a free thumbnail",
+      "ctaSecondary": "Contact"
+    },
+
+    "footer": "© 2026 Nicolás Espin"
   }
 }
