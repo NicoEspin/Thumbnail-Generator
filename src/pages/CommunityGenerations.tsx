@@ -1,7 +1,6 @@
 import { ArrowRight, DownloadIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { type IThumbnail } from "../assets/assets";
 import SoftBackdrop from "../components/SoftBackdrop";
@@ -9,7 +8,6 @@ import api from "../configs/api";
 
 const CommunityGenerations = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const aspectRatioClassMap: Record<string, string> = {
     "16:9": "16 / 9",
@@ -37,7 +35,9 @@ const CommunityGenerations = () => {
       setHasMore(nextPage < totalPages);
       setPage(nextPage);
 
-      setThumbnails((prev) => (mode === "append" ? [...prev, ...items] : items));
+      setThumbnails((prev) =>
+        mode === "append" ? [...prev, ...items] : items,
+      );
     } catch (error: any) {
       console.log(error);
       toast.error(error?.response?.data?.message || error?.message);
@@ -53,6 +53,15 @@ const CommunityGenerations = () => {
     link.click();
     link.remove();
   };
+
+  const openYoutubePreview = useCallback((thumbnail: IThumbnail) => {
+    // URL absoluta para que funcione bien en target _blank
+    const url = new URL("/preview", window.location.origin);
+    url.searchParams.set("thumbnail_url", thumbnail.image_url ?? "");
+    url.searchParams.set("title", thumbnail.title ?? "");
+
+    window.open(url.toString(), "_blank", "noopener,noreferrer");
+  }, []);
 
   useEffect(() => {
     fetchPage(1, "replace");
@@ -104,14 +113,18 @@ const CommunityGenerations = () => {
                 const aspectClass =
                   aspectRatioClassMap[thumbnail.aspect_ratio || "16:9"];
 
-                const previewUrl = `/preview?thumbnail_url=${encodeURIComponent(
-                  thumbnail.image_url ?? "",
-                )}&title=${encodeURIComponent(thumbnail.title ?? "")}`;
-
                 return (
                   <div
                     key={thumbnail._id}
-                    onClick={() => navigate(previewUrl)}
+                    onClick={() => openYoutubePreview(thumbnail)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        openYoutubePreview(thumbnail);
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
                     className="mb-8 group relative cursor-pointer rounded-2xl bg-white/6 border border-white/10 transition shadow-xl break-inside-avoid"
                   >
                     {/* Image */}
@@ -168,21 +181,30 @@ const CommunityGenerations = () => {
                       onClick={(e) => e.stopPropagation()}
                     >
                       {!!thumbnail.image_url && (
-                        <DownloadIcon
+                        <button
+                          type="button"
                           onClick={() => handleDownload(thumbnail.image_url!)}
                           className="size-6 bg-black/50 p-1 rounded hover:bg-pink-600 transition-all"
-                          aria-label={t("communityGenerations.actions.download")}
-                        />
+                          aria-label={t(
+                            "communityGenerations.actions.download",
+                          )}
+                          title={t("communityGenerations.actions.download")}
+                        >
+                          <DownloadIcon className="size-full" />
+                        </button>
                       )}
 
-                      <Link
-                        target="_blank"
-                        to={previewUrl}
-                        aria-label={t("communityGenerations.actions.openPreview")}
+                      <button
+                        type="button"
+                        onClick={() => openYoutubePreview(thumbnail)}
+                        className="size-6 bg-black/50 p-1 rounded hover:bg-pink-600 transition-all"
+                        aria-label={t(
+                          "communityGenerations.actions.openPreview",
+                        )}
                         title={t("communityGenerations.actions.openPreview")}
                       >
-                        <ArrowRight className="size-6 bg-black/50 p-1 rounded hover:bg-pink-600 transition-all" />
-                      </Link>
+                        <ArrowRight className="size-full" />
+                      </button>
                     </div>
                   </div>
                 );
